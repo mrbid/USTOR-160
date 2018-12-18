@@ -426,7 +426,7 @@ int main(int argc , char *argv[])
         if(st < time(0))
         {
             if(reqs != 0)
-                printf("Req/s: %ld - Blocked: %llu - Allowed: %llu - Rejected: %llu - Resets: %llu - Sites: %llu - Error: %llu\n", reqs / (time(0)-tt), block, allow, rej, reset, site_count, err);
+                printf("Req/s: %ld - Blocked: %llu - Allowed: %llu - Rejected: %llu - Buff Loops: %llu - Sites: %llu - Error: %llu\n", reqs / (time(0)-tt), block, allow, rej, reset, site_count, err);
             tt = time(0);
             reqs = 0;
             st = time(0)+180; //3 Min Display Interval
