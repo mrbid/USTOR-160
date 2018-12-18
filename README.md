@@ -1,1 +1,29 @@
-USTOR-160
+IDFA - a unique user id
+
+This will allow accurate and high performance for low cost single-server rtb
+and dsp solutions, there is no set time for IDFA expirary as it is automatic,
+based on your average daily win rate, the buffers MAX_SITES and MAX_IDFA_PER_SITE
+will fill accordingly.
+
+The idea here is if your winning around one million impressions a day, from roughly
+250 different publisher/site id's then MAX_SITES 400 and MAX_IDFA_PER_SITE 4000
+would seem a suitable memory requirement to ensure IDFA's where kept for around
+24 hours.
+
+The buffer write is cyclic/ring buffer so oldest IDFA's are the first to be forgotten
+when the buffer does finally fill and loop back to it's beginning.
+This creates am effect where smaller sites sending less traffic have their IDFA's
+blocked for a longer period of time. Minimizing repeat traffic from lower supplying
+traffic sources.
+
+You will get notifications in the console which let you know when site buffers max
+and trigger a loop, all are timestamped.
+
+Execute the USTOR process and you will be able to use the php functions below
+on the same local server.
+
+USTOR opens a TCP port 6810 and then allows you to send two simple commands
+as can be seen in the php code below, which allow adding an IDFA and checking
+to see if an IDFA has been added.
+
+For larger scale solutions I am currently using UDP and a bucketed Hash Map.
