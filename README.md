@@ -34,6 +34,8 @@ The SITES / IDFA bucketing keeps array iterations low(er), and the ring buffer w
 head with all the memory pre-allocated keeps writes O(1) while still being
 advantageous to culling oldest IDFA's first.
 
+For small single server solutions, a local instance of USTOR-160 should have more
+than adequate performance and reliability.
 
 PHP Functions for Write and Check operations
 
