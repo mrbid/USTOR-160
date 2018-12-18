@@ -30,7 +30,7 @@ USTOR opens a TCP port 6810 and then allows you to send two simple commands
 as can be seen in the php code below, which allow adding an IDFA and checking
 to see if an IDFA has been added.
 
-The SITES / IDFA bucketing keeps array iterations low, and the ring buffer write
+The SITES / IDFA bucketing keeps array iterations low(er), and the ring buffer write
 head with all the memory pre-allocated keeps writes O(1) while still being
 advantageous to culling oldest IDFA's first.
 
