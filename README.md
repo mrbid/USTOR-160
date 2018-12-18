@@ -4,8 +4,8 @@
 
 *Term: IDFA - a unique user id*
 
-This will allow accurate and high performance for low cost single-server rtb
-and dsp solutions, there is no set time for IDFA expirary as it is automatic,
+This will allow accurate and high performance for low cost single-server RTB
+and DSP solutions, there is no set time for IDFA expirary as it is automatic,
 based on your average daily win rate, the buffers MAX_SITES and MAX_IDFA_PER_SITE
 will fill accordingly.
 
