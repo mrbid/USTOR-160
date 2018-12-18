@@ -1,4 +1,6 @@
-IDFA - a unique user id
+USTOR - A Linux/C solution for Tracking UID's and Unique Capping.
+
+Term: IDFA - a unique user id
 
 This will allow accurate and high performance for low cost single-server rtb
 and dsp solutions, there is no set time for IDFA expirary as it is automatic,
