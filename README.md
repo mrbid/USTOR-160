@@ -31,3 +31,39 @@ head with all the memory pre-allocated keeps writes O(1) while still being
 advantageous to culling oldest IDFA's first.
 
 For larger scale solutions I am currently using UDP and a bucketed Hash Map.
+
+
+PHP Functions for Write and Check operations
+
+function add_ustor($source, $idfa)
+{
+    $fp = stream_socket_client("tcp://127.0.0.1:6810", $errno, $errstr, 1);
+    if($fp)
+    {
+        fwrite($fp, "$" . sha1($source) . " " . sha1($idfa));
+        fclose($fp);
+    }
+}
+
+function check_ustor($source, $idfa)
+{
+    $fp = stream_socket_client("tcp://127.0.0.1:6810", $errno, $errstr, 1);
+    if($fp)
+    {
+        $r = fwrite($fp, sha1($source) . " " . sha1($idfa));
+        if($r == FALSE)
+        {
+            fclose($fp);
+            return TRUE;
+        }
+        $r = fread($fp, 1);
+        if($r != FALSE && $r[0] == 'y')
+        {
+            fclose($fp);
+            return TRUE;
+        }
+        fclose($fp);
+        return FALSE; //FALSE = It's not stored, you can bid :)
+    }
+    return TRUE;
+}
