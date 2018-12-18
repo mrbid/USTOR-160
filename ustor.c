@@ -103,7 +103,6 @@ function check_ustor($source, $idfa)
 #include <signal.h> //SIGPIPE
 #include <netdb.h> //hostent
 #include <unistd.h> //Sleep
-#include <pthread.h> //Threading
 #include "sha1.h"
 
 
