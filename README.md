@@ -35,7 +35,8 @@ For larger scale solutions I am currently using UDP and a bucketed Hash Map.
 
 PHP Functions for Write and Check operations
 
-```function add_ustor($source, $idfa)
+```
+function add_ustor($source, $idfa)
 {
     $fp = stream_socket_client("tcp://127.0.0.1:6810", $errno, $errstr, 1);
     if($fp)
@@ -43,9 +44,11 @@ PHP Functions for Write and Check operations
         fwrite($fp, "$" . sha1($source) . " " . sha1($idfa));
         fclose($fp);
     }
-}```
+}
+```
 
-```function check_ustor($source, $idfa)
+```
+function check_ustor($source, $idfa)
 {
     $fp = stream_socket_client("tcp://127.0.0.1:6810", $errno, $errstr, 1);
     if($fp)
@@ -66,4 +69,5 @@ PHP Functions for Write and Check operations
         return FALSE; //FALSE = It's not stored, you can bid :)
     }
     return TRUE;
-}```
+}
+```
