@@ -34,8 +34,6 @@ The SITES / IDFA bucketing keeps array iterations low(er), and the ring buffer w
 head with all the memory pre-allocated keeps writes O(1) while still being
 advantageous to culling oldest IDFA's first.
 
-For larger scale solutions I am currently using UDP and a bucketed Hash Map.
-
 
 PHP Functions for Write and Check operations
 
