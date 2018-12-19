@@ -406,6 +406,9 @@ int main(int argc , char *argv[])
     uint reqs = 0;
     uint st = time(0);
     tt = time(0);
+    char client_message[RECV_BUFF_SIZE];
+    char psite[MIN_LEN];
+    char pidfa[MIN_LEN];
     while(1)
     {
         //Listen for connections
@@ -421,7 +424,6 @@ int main(int argc , char *argv[])
         }
 
         //Client Command
-        char client_message[RECV_BUFF_SIZE];
         memset(client_message, '\0', sizeof(client_message));
         read_size = recv(client_sock, client_message, RECV_BUFF_SIZE-1, 0);
 
@@ -445,9 +447,7 @@ int main(int argc , char *argv[])
         reqs++;
 
         //Parse the message
-        char psite[MIN_LEN];
         psite[0] = 0x00;
-        char pidfa[MIN_LEN];
         pidfa[0] = 0x00;
         parseMsg(client_message, psite, pidfa);
         if(psite[0] == 0x00 || pidfa == 0x00)
