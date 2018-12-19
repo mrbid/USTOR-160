@@ -108,7 +108,7 @@ function check_ustor($source, $idfa)
 
 // [directly relfects memory usage]
 #define MAX_SITES 2048              //Max number of sites possible to track
-#define MAX_IDFA_PER_SITE 32768     //How many IDFA's we can track at any one time
+#define MAX_IDFA_PER_SITE 32768     //How many IDFA's we can track at any one time, per site
 
 //Maximum recv length of incomming string
 #define RECV_BUFF_SIZE 2048
