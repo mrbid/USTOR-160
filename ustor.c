@@ -401,6 +401,9 @@ int main(int argc , char *argv[])
     }
     printf("Bind took: %.2f minutes ...\n", (float)(time(0)-tt) / 60.0f);
     puts("Waiting for connections...");
+    
+    //Listen for connections
+    listen(socket_desc, 512);
 
     //Never allow process to end
     uint reqs = 0;
@@ -410,10 +413,7 @@ int main(int argc , char *argv[])
     char psite[MIN_LEN];
     char pidfa[MIN_LEN];
     while(1)
-    {
-        //Listen for connections
-        listen(socket_desc, 512);
-        
+    {  
         //Accept and incoming connection
         c = sizeof(struct sockaddr_in);
         client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t*) &c);
