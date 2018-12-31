@@ -377,13 +377,12 @@ int main(int argc , char *argv[])
         return 1;
     }
     puts("Socket created...");
-
-    //Allow the port to be reused
-    int reuse = 1; //mpromonet [stack overflow]
-    if(setsockopt(socket_desc, SOL_SOCKET, SO_REUSEADDR, (const char*)&reuse, sizeof(reuse)) < 0)
-        perror("setsockopt(SO_REUSEADDR) failed");
-    if(setsockopt(socket_desc, SOL_SOCKET, SO_REUSEPORT, (const char*)&reuse, sizeof(reuse)) < 0) 
-        perror("setsockopt(SO_REUSEPORT) failed");
+    
+    //Prevent Perma-Blocking
+    struct timeval tv;
+    tv.tv_sec = 1;
+    setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, (struct timeval *)&tv, sizeof(struct timeval));
+    setsockopt(sock, SOL_SOCKET, SO_SNDTIMEO, (struct timeval *)&tv, sizeof(struct timeval));
 
     //Prepare the sockaddr_in structure
     server.sin_family = AF_INET;
@@ -406,14 +405,15 @@ int main(int argc , char *argv[])
     listen(socket_desc, 512);
 
     //Never allow process to end
-    uint reqs = 0;
-    uint st = time(0);
-    tt = time(0);
     char client_message[RECV_BUFF_SIZE];
     char psite[MIN_LEN];
     char pidfa[MIN_LEN];
+    sre site, idfa;
+    uint reqs = 0;
+    uint st = time(0);
+    tt = time(0);
     while(1)
-    {  
+    {
         //Accept and incoming connection
         c = sizeof(struct sockaddr_in);
         client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t*) &c);
@@ -459,7 +459,6 @@ int main(int argc , char *argv[])
         //printf("%s %s\n", psite, pidfa);
 
         //Get site and idfa
-        sre site, idfa;
         sre1(&site, psite);
         sre1(&idfa, pidfa);
 
