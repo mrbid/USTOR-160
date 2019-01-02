@@ -414,7 +414,7 @@ int main(int argc , char *argv[])
     tt = time(0);
     while(1)
     {
-        //Accept and incoming connection
+        //Accept an incoming connection
         c = sizeof(struct sockaddr_in);
         client_sock = accept(socket_desc, (struct sockaddr *) &client, (socklen_t*) &c);
         if(client_sock < 0)
