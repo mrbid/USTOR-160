@@ -216,7 +216,7 @@ struct site
 {
     sre site;
     sre idfa_array[MAX_IDFA_PER_SITE];
-    int idfa_head;
+    uint idfa_head;
 };
 
 //Our site buckets
