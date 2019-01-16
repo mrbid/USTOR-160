@@ -141,7 +141,7 @@ void timestamp()
 //
 //
 /*
-.   SAH1 hashing
+.   SHA1 hashing
 */
 
 #define HASH_LEN 20 //all bytes no null term
