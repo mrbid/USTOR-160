@@ -43,6 +43,7 @@ void csend(const char* ip, const char* port, const char* send)
     if(s0 != 0)
     {
         fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(s0));
+        freeaddrinfo(result);
         return;
     }
     
@@ -62,6 +63,9 @@ void csend(const char* ip, const char* port, const char* send)
 
         break;
     }
+    
+    //We're done with the ADDRINFO struct now that we have connected.
+    freeaddrinfo(result);
 
     //Write and close
     write(client_socket, send, strlen(send));
