@@ -7,7 +7,8 @@
 This will allow accurate and high performance for low cost single-server RTB
 and DSP solutions, there is no set time for IDFA expirary as it is automatic,
 based on your average daily win rate, the buffers MAX_SITES and MAX_IDFA_PER_SITE
-will fill accordingly.
+will fill accordingly. The idea here is that you block X amount of users for as
+long as you possibly can with the quantity of memory allocated.
 
 The idea here is if your winning around one million impressions a day, from roughly
 250 different publisher/site id's then MAX_SITES 400 and MAX_IDFA_PER_SITE 4000
